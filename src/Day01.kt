@@ -1,15 +1,28 @@
 fun main() {
     fun part1(input: List<String>): Int {
-        return input.size
+        var mostCalories = 0
+        input.fold(0) { acc, item ->
+            if (item.isBlank()) {
+                if (acc > mostCalories)
+                    mostCalories = acc
+                0
+            } else
+                acc + item.toInt()
+        }
+        return mostCalories
     }
 
     fun part2(input: List<String>): Int {
-        return input.size
+        val totalCaloriesPerElf = mutableListOf<Int>()
+        input.fold(0) { acc, item ->
+            if (item.isBlank()) {
+                totalCaloriesPerElf.add(acc)
+                0
+            } else
+                acc + item.toInt()
+        }
+        return totalCaloriesPerElf.sortedDescending().take(3).sum()
     }
-
-    // test if implementation meets criteria from the description, like:
-    val testInput = readInput("Day01_test")
-    check(part1(testInput) == 1)
 
     val input = readInput("Day01")
     println(part1(input))
