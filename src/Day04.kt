@@ -5,11 +5,8 @@ fun main() {
                 pairRangesString.split(',', '-')
                     .let { it[0].toInt()..it[1].toInt() to it[2].toInt()..it[3].toInt() }
             }
-            .fold(0) { acc, (firstRange, secondRange) ->
-                if (firstRange.all { it in secondRange } || secondRange.all { it in firstRange })
-                    acc + 1
-                else
-                    acc
+            .count { (firstRange, secondRange) ->
+                firstRange.all { it in secondRange } || secondRange.all { it in firstRange }
             }
 
     fun part2(input: List<String>): Int =
@@ -18,11 +15,8 @@ fun main() {
                 pairRangesString.split(',', '-')
                     .let { it[0].toInt()..it[1].toInt() to it[2].toInt()..it[3].toInt() }
             }
-            .fold(0) { acc, (firstRange, secondRange) ->
-                if ((firstRange intersect secondRange).isNotEmpty())
-                    acc + 1
-                else
-                    acc
+            .count { (firstRange, secondRange) ->
+                (firstRange intersect secondRange).isNotEmpty()
             }
 
     val input = readInput("Day04")
