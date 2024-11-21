@@ -1,3 +1,7 @@
+package aoc2022
+
+import readInput
+
 fun main() {
     fun part1(input: String): Int {
         input.substring(4, input.length).foldIndexed(ArrayDeque(input.take(4).toList())) { i, acc, e ->

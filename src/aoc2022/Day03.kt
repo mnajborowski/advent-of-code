@@ -1,3 +1,7 @@
+package aoc2022
+
+import readInput
+
 fun main() {
     val itemPriorities = (('a'..'z') + ('A'..'Z')).mapIndexed { i, e -> e to i + 1 }.toMap()
 

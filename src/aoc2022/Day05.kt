@@ -1,3 +1,7 @@
+package aoc2022
+
+import readInput
+
 fun main() {
     val input = readInput("Day05")
     val stackLabels = input[8]
